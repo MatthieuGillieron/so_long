@@ -9,7 +9,8 @@ CC = gcc
 
 # Chemin vers la bibliothèque MiniLibX
 MLX_DIR = mlx
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+MLX_LIB = $(MLX_DIR)libmlx.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -Lmlx -framework OpenGL -framework AppKit
 
 # Règle par défaut
 all: $(NAME)
@@ -17,6 +18,9 @@ all: $(NAME)
 # Compilation de l'exécutable
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+
+$(MLX_LIB):
+	$(MAKE) -C $(MLX_DIR)
 
 # Règle pour compiler main.c en main.o
 $(OBJS): src/main.c

@@ -1,17 +1,16 @@
-#include "mlx.h"
-
-#include "mlx.h"
+#include "../mlx/mlx.h"
 
 int main()
 {
-    void *mlx;
+    void *mlx_ptr;
+	void *win_ptr;
 
-    mlx = mlx_init();  // Initialisation de la connexion avec MiniLibX
+	mlx_ptr = mlx_init();  // Initialisation de la connexion avec MiniLibX
+	win_ptr = mlx_new_window(mlx_ptr, 400, 300, "titre");
+	if (!win_ptr)
+		return (1);
 
-    mlx_pixel_put(mlx, mlx, 400, 300, 0x00FF00); // Affichage d'un pixel vert
-
-    mlx_loop(mlx); // Lancement de la boucle d'événements
+    mlx_loop(mlx_ptr); // Lancement de la boucle d'événements
 
     return (0);
 }
-
