@@ -1,23 +1,31 @@
 NAME = so_long
 
-SRC = so_long.c
+# Mettre à jour le chemin du fichier source
+SRC = src/main.c
+OBJS = $(SRC:.c=.o)   # Compile main.c en main.o dans le même dossier
 
-OBJS = $(SRC:.c=.o)
-
-FLAGS = -Wall -Werror -Wextra
-
+FLAGS = -Wall -Werror -Wextra -I./mlx
 CC = gcc
 
-all : $(NAME)
+# Chemin vers la bibliothèque MiniLibX
+MLX_DIR = mlx
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRC)
-	ar rcs $(NAME) $(OBJS)
+# Règle par défaut
+all: $(NAME)
 
-clean: 
+# Compilation de l'exécutable
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+
+# Règle pour compiler main.c en main.o
+$(OBJS): src/main.c
+	$(CC) $(FLAGS) -c src/main.c -o src/main.o
+
+clean:
 	rm -rf $(OBJS)
 
-fclean: 
+fclean:
 	rm -f $(NAME)
 
 re: fclean all
