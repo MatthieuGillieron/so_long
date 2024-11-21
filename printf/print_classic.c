@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fontion_print_1.c                                  :+:      :+:    :+:   */
+/*   utils_print1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:00:42 by mg                #+#    #+#             */
-/*   Updated: 2024/10/08 15:12:31 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/21 11:03:00 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,13 @@ int	ft_print_digit(int nb)
 	return (count);
 }
 
-int	ft_print_hex_min(unsigned long num)
+int	ft_print_unsigned(unsigned int nb)
 {
-	int		count;
-	char	*hex_digits;
+	int	count;
 
 	count = 0;
-	hex_digits = "0123456789abcdef";
-	if (num >= 16)
-		count += ft_print_hex_min(num / 16);
-	count += ft_putchar(hex_digits[num % 16]);
-	return (count);
-}
-
-int	ft_print_hex_maj(unsigned long num)
-{
-	int		count;
-	char	*hex_digits;
-
-	count = 0;
-	hex_digits = "0123456789ABCDEF";
-	if (num >= 16)
-		count += ft_print_hex_maj(num / 16);
-	count += ft_putchar(hex_digits[num % 16]);
+	if (nb > 9)
+		count += ft_print_unsigned(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }

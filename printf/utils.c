@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonction_print_2.c                                 :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 19:10:05 by mg                #+#    #+#             */
-/*   Updated: 2024/10/08 15:19:38 by mg               ###   ########.fr       */
+/*   Created: 2024/09/26 13:08:13 by mg                #+#    #+#             */
+/*   Updated: 2024/11/21 11:07:30 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_unsigned(unsigned int nb)
+int	ft_putchar(int c)
 {
-	int	count;
-
-	count = 0;
-	if (nb > 9)
-		count += ft_print_unsigned(nb / 10);
-	count += ft_putchar((nb % 10) + '0');
-	return (count);
+	return (write(1, &c, 1));
 }
 
-int	ft_print_adresse(void *ptr)
+int	ft_putstr_opti(char *str)
 {
-	unsigned long	adresse;
-	int				count;
+	int	len;
 
-	adresse = (unsigned long)ptr;
-	count = 0;
-	count += ft_putstr_opti("0x");
-	count += ft_print_hex_min(adresse);
-	return (count);
+	len = 0;
+	while (str[len])
+		len++;
+	write (1, str, len);
+	return (len);
 }
