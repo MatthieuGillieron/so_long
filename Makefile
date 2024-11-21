@@ -1,8 +1,10 @@
 NAME = so_long
 
-# Mettre à jour le chemin du fichier source
-SRC = src/main.c
-OBJS = $(SRC:.c=.o)  
+SRC = $(wildcard src/*.c)
+GNL = $(wildcard gnl/*.c)
+PRINTF = $(wildcard printf/*.c)
+HEADERS = $(wildcard include/*.h)
+OBJS = $(SRC:.c=.o) $(GNL:.c=.o) $(PRINTF:.c=.o)
 
 FLAGS = -Wall -Werror -Wextra -I./mlx
 CC = gcc
@@ -11,16 +13,20 @@ MLX_DIR = mlx
 MLX_LIB = $(MLX_DIR)libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -Lmlx -framework OpenGL -framework AppKit
 
+
 all: $(NAME)
+
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
+
 $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
-$(OBJS): src/main.c
-	$(CC) $(FLAGS) -c src/main.c -o src/main.o
+
+%.o: %.c $(HEADER)
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
