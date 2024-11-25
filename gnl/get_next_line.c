@@ -6,11 +6,11 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:00:59 by mg                #+#    #+#             */
-/*   Updated: 2024/10/28 10:14:29 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/25 10:25:53 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 static char	*read_n_stash(int fd, char *buf, char *stash)
 {

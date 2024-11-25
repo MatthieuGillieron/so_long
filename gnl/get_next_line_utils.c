@@ -6,11 +6,11 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:47:00 by mg                #+#    #+#             */
-/*   Updated: 2024/10/28 10:26:19 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/25 10:25:43 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 int	ft_strlen(const char *str)
 {
