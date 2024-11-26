@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/25 14:52:42 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/26 09:34:09 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ void	draw_map(char **map, void *mlx_ptr, void *win_ptr)
 	size_t	y;
 
 	y = 0;
-	x = 0;
 	while (map[y])
 	{
+			x = 0;
 		while(map[y][x])
 		{
 			if (map[y][x] == '1')
-				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFFFFFF);
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFFFFFFF);
 			else if (map[y][x] == '0')
 				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x000000);
 			else if (map[y][x] == 'P')
