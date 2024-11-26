@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/26 09:34:09 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/26 11:35:23 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../mlx/mlx.h"
 #include "../includes/get_next_line.h"
 #include "../includes/ft_printf.h"
-
+/*
 char	**read_map(const char *path)
 {
 	int	fd;
@@ -82,7 +82,7 @@ void	print_map(char	**map)
 }
 
 
-#define TILE_SIZE 32
+#define TILE_SIZE 80
 
 
 void	draw_map(char **map, void *mlx_ptr, void *win_ptr)
@@ -97,13 +97,13 @@ void	draw_map(char **map, void *mlx_ptr, void *win_ptr)
 		while(map[y][x])
 		{
 			if (map[y][x] == '1')
-				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFFFFFFF);
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFFFFFFF); //blanc
 			else if (map[y][x] == '0')
-				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x000000);
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x000000); //noir
 			else if (map[y][x] == 'P')
-				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFF0000);
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFF0000); //rouge
 			else if (map[y][x] == 'C')
-				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x00FF00);
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x00FF00); //vert
 				
 			x++;
 		}
@@ -168,40 +168,5 @@ int main()
 
 	free(map);
 	return 0;
-}
-
-
-
-
-
-
-
-
-
-/*
-int	main()
-{
-	char	**map;
-
-	map = read_map("map/map1.ber");
-	if (!map)
-	{
-		ft_printf("ERREUR : map no charge");
-		return (1);
-	}
-	ft_printf("OK : map charge");
-	print_map(map);
-
-	size_t	i;
-	
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	
-	free(map);
-	return (0);
 }
 */

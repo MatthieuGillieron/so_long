@@ -1,0 +1,29 @@
+/* XPM */
+static char *_ac35c2c69e84dfb91bf629f9e917f00y3CQjW9qaUnglKNo[] = {
+/* columns rows colors chars-per-pixel */
+"128 16 7 1 ",
+"  c None",
+". c #181425",
+"X c #3F2832",
+"o c #E4A672",
+"O c #FEE761",
+"+ c #EAD4AA",
+"@ c white",
+/* pixels */
+"      oooo                                                                                                            oooo      ",
+"    oo+OO+oo          oooo            oooo                                            oooo            oooo          oo+OO+oo    ",
+"   o+OOOOOO+o       oo+OO+oo        oooooooo          oooo            oooo          oo+OO+oo        oo+OO+oo       o+OOOOOO+o   ",
+"  o+OOo.OOOO+o     o+OOOOOO+o      ooo+OO+ooo       oo+OO+oo        oo+OO+oo       o+OOOOOO+o      o+OOOOOO+o     o+OOo.OOOO+o  ",
+"  oOOO@XOOOOOo    o+OOo.OOOO+o    oo+OOOOOO+oo     o+OOOOOO+o      o+OOOOOO+o     o+OOo.OOOO+o    o+OOo.OOOO+o    oOOO@XOOOO+o  ",
+" o+OOOOOOOOOO+o   oOOO@XOOOOOo    o+OOo.OOOO+o    o+OOo.OOOO+o    o+OOo.OOOO+o    oOOO@XOOOO+o    oOOO@XOOO+oo   o+OOOOOOO+ooo  ",
+" oOOOOOOOOOOOOo  o+OOOOOOOOOO+o  ooOOO@XOOOOOoo   oOOO@XOOOOOo    oOOO@XOOOO+o   o+OOOOOOO+ooo   o+OOOOOO+oo     oOOOOOOO+oooo  ",
+" oOOOOOOOOOOOOo  oOOOOOOOOOOOOo  o+OOOOOOOOOO+o  o+OOOOOOOOOO+o  o+OOOOOOO+ooo   oOOOOOOO+oooo   oOOOOOO+o       oOOOOOOO+o     ",
+" o+OOOOOOOOOO+o  oOOOOOOOOOOOOo  oOOOOOOOOOOOOo  oOOOOOOOOOOOOo  oOOOOOOO+o      oOOOOOOO+o      oOOOOOO+o       o+OOOOOOO+ooo  ",
+"  oOOOOOOOOOOo   o+OOOOOOOOOO+o  oOOOOOOOOOOOOo  oOOOOOOOOOOOOo  oOOOOOOO+o      o+OOOOOOO+ooo   o+OOOOOO+oo     ooOOOOOOOOO+o  ",
+"  o+OOOOOOOO+o    oOOOOOOOOOOo   o+OOOOOOOOOO+o  o+OOOOOOOOOO+o  o+OOOOOOO+ooo   ooOOOOOOOOO+o    oOOOOOOOO+oo    o+OOOOOOOO+o  ",
+"   o+OOOOOO+o     o+OOOOOOOO+o    oOOOOOOOOOOo    oOOOOOOOOOOo    oOOOOOOOOO+o    o+OOOOOOOO+o    o+OOOOOOOO+o    oo+OOOOOO+oo  ",
+"    oo+OO+oo       o+OOOOOO+o     o+OOOOOOOO+o    o+OOOOOOOO+o    o+OOOOOOOO+o    oo+OOOOOO+oo     o+OOOOOO+o      ooo+OO+ooo   ",
+"      oooo          oo+OO+oo       o+OOOOOO+o      o+OOOOOO+o      o+OOOOOO+o      ooo+OO+ooo       oo+OO+oo        oooooooo    ",
+"                      oooo          oo+OO+oo        oo+OO+oo        oo+OO+oo        oooooooo          oooo            oooo      ",
+"                                      oooo            oooo            oooo            oooo                                      "
+};
