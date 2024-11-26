@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/26 11:44:04 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/26 13:28:02 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	print_map(char	**map)
 }
 
 
-#define TILE_SIZE 1
+#define TILE_SIZE 32
 
 typedef struct s_textures
 {
@@ -128,10 +128,10 @@ t_textures	*load_textures(void *mlx_ptr)
 	if (!textures)
 		return (NULL);
 	
-	textures->wall = mlx_xpm_file_to_image(mlx_ptr, "assets/Tileset_1.xpm", &textures->width, &textures->height);
-	textures->floor = mlx_xpm_file_to_image(mlx_ptr, "assets/depositphotos_22823894-stock-photo-dark-concrete-texture.xpm", &textures->width, &textures->height);
-	textures->players = mlx_xpm_file_to_image(mlx_ptr, "assets/PacMan_1.xpm", &textures->width, &textures->height);
-	textures->collect = mlx_xpm_file_to_image(mlx_ptr, "assets/BigCoinTransparent.xpm", &textures->width, &textures->height);
+	textures->wall = mlx_xpm_file_to_image(mlx_ptr, "assets/wall.xpm", &textures->width, &textures->height);
+	textures->floor = mlx_xpm_file_to_image(mlx_ptr, "assets/background.xpm", &textures->width, &textures->height);
+	textures->players = mlx_xpm_file_to_image(mlx_ptr, "assets/players.xpm", &textures->width, &textures->height);
+	textures->collect = mlx_xpm_file_to_image(mlx_ptr, "assets/collect.xpm", &textures->width, &textures->height);
 
 	if(!textures->wall || !textures->floor || !textures->players || !textures->collect)
 	{
@@ -175,7 +175,7 @@ int main()
 
 	
 
-	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "test");
+	win_ptr = mlx_new_window(mlx_ptr, 600, 500, "test");
 	if (!win_ptr)
 	{
 		printf("ERREUR : Impossible de créer la fenêtre\n");
