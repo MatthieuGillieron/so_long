@@ -25,7 +25,7 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADERS)
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

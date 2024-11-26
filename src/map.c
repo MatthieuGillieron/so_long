@@ -6,13 +6,15 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/25 11:51:13 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/25 14:52:42 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+#include "../mlx/mlx.h"
 #include "../includes/get_next_line.h"
 #include "../includes/ft_printf.h"
 
@@ -79,6 +81,104 @@ void	print_map(char	**map)
 	}
 }
 
+
+#define TILE_SIZE 32
+
+
+void	draw_map(char **map, void *mlx_ptr, void *win_ptr)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	x = 0;
+	while (map[y])
+	{
+		while(map[y][x])
+		{
+			if (map[y][x] == '1')
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFFFFFF);
+			else if (map[y][x] == '0')
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x000000);
+			else if (map[y][x] == 'P')
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0xFF0000);
+			else if (map[y][x] == 'C')
+				mlx_pixel_put(mlx_ptr, win_ptr, x * TILE_SIZE, y * TILE_SIZE, 0x00FF00);
+				
+			x++;
+		}
+		y++;
+	}
+}
+
+
+
+
+
+
+int main()
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	char	**map;
+
+	map = read_map("map/map1.ber");
+	if (!map)
+	{
+		printf(" ERREUR : NO LOAD MAP");
+		return (1);
+	}
+
+	printf("avant init\n");
+	mlx_ptr = mlx_init();
+	printf("after init\n");
+
+	if (!mlx_ptr)
+	{
+		printf("ERREUR : INIT IS BROKE");
+		return (1);
+	}
+
+	printf("before win\n");
+	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "its so long");
+	printf("after win\n");
+
+	if (!win_ptr)
+	{
+		printf("ERREUR : BROKE WINDOW");
+		return (1);
+	}
+	else
+		printf("\nwindow ok\n");
+		
+	draw_map(map, mlx_ptr, win_ptr);
+
+	printf("\nbefore loop\n");
+	mlx_loop(mlx_ptr);
+	printf("after loop\n");
+
+	size_t	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+
+	free(map);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+/*
 int	main()
 {
 	char	**map;
@@ -104,3 +204,4 @@ int	main()
 	free(map);
 	return (0);
 }
+*/
