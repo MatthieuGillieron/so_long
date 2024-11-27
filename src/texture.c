@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/27 10:37:17 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/27 10:38:19 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	map_dimension(char	**map, size_t *width, size_t *height)
 			line_len++;
 		if (line_len > *width)
 			*width = line_len;
-		*height++;
+		(*height)++;
 	}
 }
 
