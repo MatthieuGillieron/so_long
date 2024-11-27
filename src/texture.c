@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/27 10:38:19 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/27 10:47:14 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	map_dimension(char	**map, size_t *width, size_t *height)
 		size_t line_len;
 
 		line_len = 0;
-		while (map[*height][line_len])
+		while (map[*height][line_len] != '\n') // le 'n' pour skip la colone en trop a droite
 			line_len++;
 		if (line_len > *width)
 			*width = line_len;
@@ -187,7 +187,7 @@ int main()
 	t_textures	*textures;
 	
 
-	map = read_map("map/map1.ber");
+	map = read_map("map/classic.ber");
 	if (!map)
 	{
 		printf("[ERROR] -> MAP BROKE");
