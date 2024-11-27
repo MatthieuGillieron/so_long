@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/27 10:31:19 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/27 10:37:17 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,18 @@ void	map_dimension(char	**map, size_t *width, size_t *height)
 	}
 }
 
+void	free_map(char **map)
+{
+	size_t	i;
+
+	i = 0;
+	while(map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
 
 void	draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures)
@@ -229,6 +241,8 @@ int main()
 	draw_map(map, mlx_ptr, win_ptr, textures);
 	
 	mlx_loop(mlx_ptr);
+	free_map(map);
+	free(textures);
 	return 0;
 }
 
