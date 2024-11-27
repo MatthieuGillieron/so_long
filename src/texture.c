@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/26 13:28:02 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/27 10:31:19 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,28 @@ typedef struct s_textures
 	int		height;
 }			t_textures;
 
+
+
+void	map_dimension(char	**map, size_t *width, size_t *height)
+{
+	*width = 0;
+	*height = 0;
+
+	while (map[*height])
+	{
+		size_t line_len;
+
+		line_len = 0;
+		while (map[*height][line_len])
+			line_len++;
+		if (line_len > *width)
+			*width = line_len;
+		*height++;
+	}
+}
+
+
+
 void	draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures)
 {
 	size_t	x;
@@ -174,8 +196,18 @@ int main()
 		printf("[OK] -> INIT");
 
 	
+	size_t map_width;
+	size_t map_height;
+	int	window_width;
+	int	window_height;
 
-	win_ptr = mlx_new_window(mlx_ptr, 600, 500, "test");
+	map_dimension(map, &map_width, &map_height);
+
+	window_width = map_width * TILE_SIZE;
+	window_height = map_height * TILE_SIZE;
+
+
+	win_ptr = mlx_new_window(mlx_ptr, window_width, window_height, "test");
 	if (!win_ptr)
 	{
 		printf("ERREUR : Impossible de créer la fenêtre\n");
