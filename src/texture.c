@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/28 11:12:47 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/28 11:18:48 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,11 +256,16 @@ t_textures	*load_textures(void *mlx_ptr)
 
 int main()
 {
+	t_game		game;
+	size_t 		map_width;
+	size_t 		map_height;
+
+	int			window_width;
+	int			window_height;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		**map;
 	t_textures	*textures;
-	t_game		game;
 
 	game.map = read_map("map/classic.ber");
 	if (!game.map)
@@ -270,8 +275,12 @@ int main()
 	}
 	else
 		printf("[OK] -> MAP");
+	
+
 
 	player_position(&game);
+
+
 
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
@@ -282,16 +291,15 @@ int main()
 	else
 		printf("[OK] -> INIT");
 
+
+
 	
-	size_t map_width;
-	size_t map_height;
-	int	window_width;
-	int	window_height;
 
 	map_dimension(game.map, &map_width, &map_height);
-
 	window_width = map_width * TILE_SIZE;
 	window_height = map_height * TILE_SIZE;
+
+
 
 
 	game.win_ptr = mlx_new_window(game.mlx_ptr, window_width, window_height, "test");
@@ -312,12 +320,18 @@ int main()
 		printf("[OK] -> LOAD");
 
 
+
+
 	draw_map(game.map, game.mlx_ptr, game.win_ptr, game.textures);
+
+
 	mlx_key_hook(game.win_ptr, keyboard, &game);
 	
 	mlx_loop(game.mlx_ptr);
-	free_map(map);
+
+	free_map(game.map);
 	free(game.textures);
+
 	return 0;
 }
 
