@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/28 10:22:28 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/28 10:46:13 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ typedef	struct s_game
 }				t_game;
 
 
-void	player_position(t_game	*game)
+void	player_position(t_game *game)
 {
 	size_t y;
 
@@ -130,9 +130,25 @@ void	player_position(t_game	*game)
 }
 
 
-void	move_player(t_game, int dx, int dy)
+void	move_player(t_game *game, int dx, int dy)
 {
-	
+	int	new_x;
+	int	new_y;
+
+	new_x = game->player_x + dx;
+	new_y =game->player_y +dy;
+
+	if (game->map[new_y][new_x] != '1')
+	{
+		game->map[game->player_y][game->player_x] = '0';
+		game->map[new_y][new_x] = 'P';
+
+		game->player_x = new_x;
+		game->player_y = new_y;
+
+		mlx_clear_window(game->mlx_ptr, game->win_ptr);
+		draw_map(game->map, game->mlx_ptr, game->win_ptr, game->textures);
+	}
 }
 
 
@@ -244,9 +260,9 @@ int main()
 	void		*win_ptr;
 	char		**map;
 	t_textures	*textures;
-	
+	t_game		game;
 
-	map = read_map("map/classic.ber");
+	game.map = read_map("map/classic.ber");
 	if (!map)
 	{
 		printf("[ERROR] -> MAP BROKE");
@@ -257,8 +273,8 @@ int main()
 
 	player_position(&game);
 
-	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
+	game.mlx_ptr = mlx_init();
+	if (!game.mlx_ptr)
 	{
 		printf("[ERROR] -> INIT BROKE");
 		return (1);
@@ -272,14 +288,14 @@ int main()
 	int	window_width;
 	int	window_height;
 
-	map_dimension(map, &map_width, &map_height);
+	map_dimension(game.map, &map_width, &map_height);
 
 	window_width = map_width * TILE_SIZE;
 	window_height = map_height * TILE_SIZE;
 
 
-	win_ptr = mlx_new_window(mlx_ptr, window_width, window_height, "test");
-	if (!win_ptr)
+	game.win_ptr = mlx_new_window(game.mlx_ptr, window_width, window_height, "test");
+	if (!game.win_ptr)
 	{
 		printf("ERREUR : Impossible de créer la fenêtre\n");
 		return (1);
@@ -287,7 +303,7 @@ int main()
 
 
 
-	textures = load_textures(mlx_ptr);
+	game.textures = load_textures(game.mlx_ptr);
 	if (!textures)
 	{
 		printf("[ERROR] -> LOAD BROKE");
@@ -297,11 +313,12 @@ int main()
 		printf("[OK] -> LOAD");
 
 
-	draw_map(map, mlx_ptr, win_ptr, textures);
+	draw_map(map, game.mlx_ptr, game.win_ptr, game.textures);
+	mlx_key_hook(game.win_ptr, keyboard, &game);
 	
-	mlx_loop(mlx_ptr);
+	mlx_loop(game.mlx_ptr);
 	free_map(map);
-	free(textures);
+	free(game.textures);
 	return 0;
 }
 
