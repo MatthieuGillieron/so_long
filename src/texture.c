@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/27 10:47:14 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/28 10:22:28 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,65 @@ typedef struct s_textures
 	int		height;
 }			t_textures;
 
+typedef	struct s_game
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**map;
+	t_textures	*textures;
+	int			player_x;
+	int			player_y;
+}				t_game;
+
+
+void	player_position(t_game	*game)
+{
+	size_t y;
+
+	y = 0;
+	while (game->map[y])
+	{
+		size_t x;
+
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == 'P')
+			{
+				game->player_x = x;
+				game->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+
+void	move_player(t_game, int dx, int dy)
+{
+	
+}
+
+
+int	keyboard(int input, t_game *game)
+{
+	if (input == 13)
+		move_player(game, 0, -1);
+	else if (input == 0)
+		move_player(game, -1, 0);
+	else if (input == 1)
+		move_player(game, 0, 1);
+	else if (input == 2)
+		move_player(game, 1, 0);
+	else if (input == 53)
+	{
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		exit (0); // verif si exit ok pour 42
+	}
+	return (0);
+}
 
 
 void	map_dimension(char	**map, size_t *width, size_t *height)
@@ -196,7 +255,7 @@ int main()
 	else
 		printf("[OK] -> MAP");
 
-
+	player_position(&game);
 
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
