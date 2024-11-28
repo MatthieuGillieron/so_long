@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/28 11:47:15 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/28 13:02:58 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef	struct s_game
 	t_textures	*textures;
 	int			player_x;
 	int			player_y;
+	int			input_count;
 }				t_game;
 
 char		**read_map(const char *path);
@@ -165,6 +166,11 @@ void	move_player(t_game *game, int dx, int dy)
 
 int	keyboard(int input, t_game *game)
 {
+	if (input == 13 || input == 0 || input == 1 || input == 2)
+	{
+		game->input_count++;
+		ft_printf("Input :  %d\n", game->input_count);
+	}
 	if (input == 13)
 		move_player(game, 0, -1);
 	else if (input == 0)
@@ -176,6 +182,8 @@ int	keyboard(int input, t_game *game)
 	else if (input == 53)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		free_map(game->map);
+		free(game->textures);
 		exit (0); // verif si exit ok pour 42
 	}
 	return (0);
@@ -274,6 +282,8 @@ int main()
 	int			window_width;
 	int			window_height;
 
+	game.input_count = 0;
+	
 	game.map = read_map("map/classic.ber");
 	if (!game.map)
 	{
