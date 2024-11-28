@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/28 10:46:13 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/28 11:12:47 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,7 @@ int main()
 	t_game		game;
 
 	game.map = read_map("map/classic.ber");
-	if (!map)
+	if (!game.map)
 	{
 		printf("[ERROR] -> MAP BROKE");
 		return (1);
@@ -302,9 +302,8 @@ int main()
 	}
 
 
-
 	game.textures = load_textures(game.mlx_ptr);
-	if (!textures)
+	if (!game.textures)
 	{
 		printf("[ERROR] -> LOAD BROKE");
 		return (1);
@@ -313,7 +312,7 @@ int main()
 		printf("[OK] -> LOAD");
 
 
-	draw_map(map, game.mlx_ptr, game.win_ptr, game.textures);
+	draw_map(game.map, game.mlx_ptr, game.win_ptr, game.textures);
 	mlx_key_hook(game.win_ptr, keyboard, &game);
 	
 	mlx_loop(game.mlx_ptr);
