@@ -6,9 +6,51 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/11/21 11:12:45 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/29 10:27:01 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+
+#include "../mlx/mlx.h"
+#include "get_next_line.h"
+#include "ft_printf.h"
+
+#define TILE_SIZE 32
+
+typedef struct s_textures
+{
+	void	*wall;
+	void	*floor;
+	void	*players;
+	void	*collect;
+	int		width;
+	int		height;
+}			t_textures;
+
+typedef	struct s_game
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**map;
+	t_textures	*textures;
+	int			player_x;
+	int			player_y;
+	int			input_count;
+}				t_game;
+
+char	**read_map(const char *path);
+int		keyboard(int input, t_game *game);
+void	print_map(char **map);
+void	player_position(t_game *game);
+void	move_player(t_game *game, int dx, int dy);
+void	map_dimension(char **map, size_t *width, size_t *height);
+void	free_map(char **map);
+void	draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures);
+
+#endif

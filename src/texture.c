@@ -6,48 +6,14 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:15:59 by mg                #+#    #+#             */
-/*   Updated: 2024/11/28 13:02:58 by mg               ###   ########.fr       */
+/*   Updated: 2024/11/29 10:26:30 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <fcntl.h>
+
 #include <unistd.h>
 
-#include "../mlx/mlx.h"
-#include "../includes/get_next_line.h"
-#include "../includes/ft_printf.h"
 
-
-typedef struct s_textures
-{
-	void	*wall;
-	void	*floor;
-	void	*players;
-	void	*collect;
-	int		width;
-	int		height;
-}			t_textures;
-
-typedef	struct s_game
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	char		**map;
-	t_textures	*textures;
-	int			player_x;
-	int			player_y;
-	int			input_count;
-}				t_game;
-
-char		**read_map(const char *path);
-void		print_map(char **map);
-void		player_position(t_game *game);
-void		move_player(t_game *game, int dx, int dy);
-int			keyboard(int input, t_game *game);
-void		map_dimension(char **map, size_t *width, size_t *height);
-void		free_map(char **map);
-void		draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures);
 
 char	**read_map(const char *path)
 {
@@ -111,9 +77,6 @@ void	print_map(char	**map)
 		i++;
 	}
 }
-
-
-#define TILE_SIZE 32
 
 
 
