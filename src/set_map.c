@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:28:26 by mg                #+#    #+#             */
-/*   Updated: 2024/11/29 11:31:56 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/02 09:49:34 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**read_map(const char *path)
 	count_lines = 0;
 	while ((line = get_next_line(fd)))
 	{
-		char	*new_map;
+		char	**new_map;
 
 		new_map = malloc(sizeof(char *) * (count_lines + 2));
 		if(!new_map)
