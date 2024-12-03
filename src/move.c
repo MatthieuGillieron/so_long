@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 13:11:42 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 14:12:42 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,20 @@ int	move_player(t_game *game, int dx, int dy)
 
 	if (game->map[new_y][new_x] != '1')
 	{
+		if (game->map[new_y][new_x] == 'C')
+		{
+			game->count_collect++;
+			game->map[new_y][new_x] = '0';
+		}
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		 game->textures->floor, game->player_x * TILE_SIZE, 
 		 game->player_y * TILE_SIZE);
-
 		game->player_x = new_x;
 		game->player_y = new_y;
-
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		 game->textures->players, game->player_x * TILE_SIZE, 
 		 game->player_y * TILE_SIZE);
+		 draw_map(game);
 		 return (1);
 	}
 	return (0);
@@ -79,7 +83,7 @@ int	keyboard(int input, t_game *game)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		free_map(game->map);
 		free(game->textures);
-		exit (0); // verif si exit ok pour 42
+		exit (0);
 	}
 	if (moved)
 	{

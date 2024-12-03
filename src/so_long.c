@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:27:23 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 11:22:46 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 13:54:57 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ int main(void)
     int	window_width;
 	int	window_height;
 
-    if (!init_game(&game, "map/classic.ber"))
+    if (!init_game(&game, "map/short.ber"))
 		return (1);
+	count_collect(game.map, &game);
 	map_dimension(game.map, &map_width, &map_height);
 	window_width = map_width * TILE_SIZE;
 	window_height = map_height * TILE_SIZE;
