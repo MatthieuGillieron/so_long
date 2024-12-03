@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/02 09:44:18 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 08:55:56 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ void	move_player(t_game *game, int dx, int dy)
 
 	if (game->map[new_y][new_x] != '1')
 	{
-		game->map[game->player_y][game->player_x] = '0';
-		game->map[new_y][new_x] = 'P';
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		 game->textures->floor, game->player_x * TILE_SIZE, 
+		 game->player_y * TILE_SIZE);
 
 		game->player_x = new_x;
 		game->player_y = new_y;
 
-		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		draw_map(game->map, game->mlx_ptr, game->win_ptr, game->textures);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		 game->textures->floor, game->player_x * TILE_SIZE, 
+		 game->player_y * TILE_SIZE);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:58:50 by mg                #+#    #+#             */
-/*   Updated: 2024/12/02 09:46:31 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 09:07:13 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,36 @@ t_textures	*load_textures(void *mlx_ptr)
 }
 
 
-void	draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures)
+void	draw_tile(t_game *game, char tile, int x, int y)
 {
-	size_t	x;
-	size_t	y;
+	void	*texture;
+
+	texture = NULL;
+			if (tile == '1')
+				texture = game->textures->wall;
+			else if (tile ==  '0')
+				texture = game->textures->floor;
+			else if (tile ==  'P')
+				texture = game->textures->players;
+			else if (tile ==  'C')
+				texture = game->textures->collect;
+			if (texture)
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, 
+				texture, x * TILE_SIZE, y * TILE_SIZE);
+}
+
+void	draw_map(t_game *game)
+{
+	int	y;
+	int	x;
 
 	y = 0;
-	while (map[y])
+	while (game->map[y])
 	{
-			x = 0;
-		while(map[y][x])
+		x = 0;
+		while (game->map[y][x])
 		{
-			if (map[y][x] == '1')
-				mlx_put_image_to_window(mlx_ptr, win_ptr, textures->wall, x * TILE_SIZE, y * TILE_SIZE);
-			else if (map[y][x] == '0')
-				mlx_put_image_to_window(mlx_ptr, win_ptr, textures->floor, x * TILE_SIZE, y * TILE_SIZE);
-			else if (map[y][x] == 'P')
-				mlx_put_image_to_window(mlx_ptr, win_ptr, textures->players, x * TILE_SIZE, y * TILE_SIZE);
-			else if (map[y][x] == 'C')
-				mlx_put_image_to_window(mlx_ptr, win_ptr, textures->collect, x * TILE_SIZE, y * TILE_SIZE);
-				
+			draw_tile(game, game->map[x][y], x, y);
 			x++;
 		}
 		y++;
