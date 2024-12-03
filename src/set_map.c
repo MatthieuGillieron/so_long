@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:28:26 by mg                #+#    #+#             */
-/*   Updated: 2024/12/02 09:49:34 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 11:19:01 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,11 @@ void	map_dimension(char **map, size_t *width, size_t *height)
 			*width = line_len;
 		(*height)++;
 	}
+}
+
+int	close_game(t_game *game)
+{
+	cleanup(game);
+	exit(0);
+	return (0);
 }

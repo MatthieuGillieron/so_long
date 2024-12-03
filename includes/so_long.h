@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 10:04:22 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 11:22:36 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ typedef	struct s_game
 }				t_game;
 
 char	**read_map(const char *path);
-int		keyboard(int input, t_game *game);
-void	print_map(char **map);
-void	player_position(t_game *game);
-void	move_player(t_game *game, int dx, int dy);
-void	map_dimension(char **map, size_t *width, size_t *height);
-void	free_map(char **map);
-void	draw_tile(t_game *game, char tile, int x, int y);
-void	draw_map(t_game *game);
-t_textures *load_textures(void *mlx_ptr);
+
+int			keyboard(int input, t_game *game);
+int			close_game(t_game *game);
+
+void		cleanup(t_game *game);
+void		print_map(char **map);
+void		player_position(t_game *game);
+void		move_player(t_game *game, int dx, int dy);
+void		map_dimension(char **map, size_t *width, size_t *height);
+void		free_map(char **map);
+void		draw_tile(t_game *game, char tile, int x, int y);
+void		draw_map(t_game *game);
+
+t_textures 	*load_textures(void *mlx_ptr);
 
 #endif

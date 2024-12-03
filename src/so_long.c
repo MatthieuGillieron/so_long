@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:27:23 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 10:48:10 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 11:22:46 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static int	init_game(t_game *game, char *path)
 	return (1);
 }
 
-static void	cleanup(t_game *game)
+
+void	cleanup(t_game *game)
 {
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free_map(game->map);
@@ -55,6 +56,7 @@ int main(void)
 	if (!game.win_ptr)
 		return (ft_printf("ERROR : Create window Broke !\n"), 1);
 	draw_map(&game);
+	mlx_hook(game.win_ptr, 17, 0, close_game, &game);
 	mlx_key_hook(game.win_ptr, keyboard, &game);
 	mlx_loop(game.mlx_ptr);
 	cleanup(&game);
