@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 14:12:42 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 14:47:38 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,55 @@ void	player_position(t_game *game)
 	}
 }
 
-int	move_player(t_game *game, int dx, int dy)
+int move_player(t_game *game, int dx, int dy)
 {
-	int	new_x;
-	int	new_y;
+    int new_x = game->player_x + dx;
+    int new_y = game->player_y + dy;
 
-	new_x = game->player_x + dx;
-	new_y =game->player_y +dy;
+    // Vérification des obstacles : mur ou sortie inaccessible
+    if (game->map[new_y][new_x] == '1' )
+		return (0);
 
-	if (game->map[new_y][new_x] != '1')
-	{
-		if (game->map[new_y][new_x] == 'C')
-		{
-			game->count_collect++;
-			game->map[new_y][new_x] = '0';
-		}
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		 game->textures->floor, game->player_x * TILE_SIZE, 
-		 game->player_y * TILE_SIZE);
-		game->player_x = new_x;
-		game->player_y = new_y;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		 game->textures->players, game->player_x * TILE_SIZE, 
-		 game->player_y * TILE_SIZE);
-		 draw_map(game);
-		 return (1);
-	}
-	return (0);
+    // Si le joueur ramasse un collectible
+    if (game->map[new_y][new_x] == 'C')
+    {
+        game->count_collect++;
+        game->map[new_y][new_x] = '0';  // Remplacer le collectible par du sol
+        // Redessiner la case du collectible comme un sol
+        mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+            game->textures->floor, new_x * TILE_SIZE, new_y * TILE_SIZE);
+    }
+
+    // Redessiner l'ancienne position du joueur avec du sol
+    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+        game->textures->floor, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+
+    // Mettre à jour la position du joueur
+    game->player_x = new_x;
+    game->player_y = new_y;
+
+    // Redessiner le joueur à la nouvelle position
+    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+        game->textures->players, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+
+    // Si tous les collectibles sont ramassés, redessiner la sortie
+    if (game->count_collect - 1 == game->total_collect)
+    {
+        int exit_x, exit_y;
+        for (exit_y = 0; game->map[exit_y]; exit_y++)
+        {
+            for (exit_x = 0; game->map[exit_y][exit_x]; exit_x++)
+            {
+                if (game->map[exit_y][exit_x] == 'E')
+                    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+                        game->textures->exit, exit_x * TILE_SIZE, exit_y * TILE_SIZE);
+            }
+        }
+    }
+
+    return (1);
 }
+
 
 int	keyboard(int input, t_game *game)
 {
@@ -79,12 +100,7 @@ int	keyboard(int input, t_game *game)
 	else if (input == 2)
 		moved = move_player(game, 1, 0);
 	else if (input == 53)
-	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		free_map(game->map);
-		free(game->textures);
-		exit (0);
-	}
+		close_game(game);
 	if (moved)
 	{
 		game->input_count++;
