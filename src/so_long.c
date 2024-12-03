@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:27:23 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 10:04:25 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 10:48:10 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	init_game(t_game *game, char *path)
 
 static void	cleanup(t_game *game)
 {
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free_map(game->map);
 	free(game->textures);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 }
 
 int main(void)

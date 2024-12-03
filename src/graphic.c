@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:58:50 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 09:07:13 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 10:47:53 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_textures	*load_textures(void *mlx_ptr)
 
 	if(!textures->wall || !textures->floor || !textures->players || !textures->collect)
 	{
-		printf("ERROR : NO LOAD TEXTURE");
+		ft_printf("ERROR : NO LOAD TEXTURE\n");
 		free(textures);
 		return (NULL);
 	}
@@ -64,7 +64,7 @@ void	draw_map(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			draw_tile(game, game->map[x][y], x, y);
+			draw_tile(game, game->map[y][x], x, y);
 			x++;
 		}
 		y++;

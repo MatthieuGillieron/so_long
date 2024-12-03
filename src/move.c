@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 08:55:56 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 10:39:28 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	move_player(t_game *game, int dx, int dy)
 		game->player_y = new_y;
 
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		 game->textures->floor, game->player_x * TILE_SIZE, 
+		 game->textures->players, game->player_x * TILE_SIZE, 
 		 game->player_y * TILE_SIZE);
 	}
 }
