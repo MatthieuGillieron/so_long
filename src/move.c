@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 11:14:14 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 13:11:42 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	player_position(t_game *game)
 	}
 }
 
-void	move_player(t_game *game, int dx, int dy)
+int	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
 	int	new_y;
@@ -55,30 +55,36 @@ void	move_player(t_game *game, int dx, int dy)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		 game->textures->players, game->player_x * TILE_SIZE, 
 		 game->player_y * TILE_SIZE);
+		 return (1);
 	}
+	return (0);
 }
 
 int	keyboard(int input, t_game *game)
 {
-	if (input == 13 || input == 0 || input == 1 || input == 2)
-	{
-		game->input_count++;
-		ft_printf("Input :  %d\n", game->input_count);
-	}
+	int	moved;
+
+	moved = 0;
+
 	if (input == 13)
-		move_player(game, 0, -1);
+		moved = move_player(game, 0, -1);
 	else if (input == 0)
-		move_player(game, -1, 0);
+		moved = move_player(game, -1, 0);
 	else if (input == 1)
-		move_player(game, 0, 1);
+		moved = move_player(game, 0, 1);
 	else if (input == 2)
-		move_player(game, 1, 0);
+		moved = move_player(game, 1, 0);
 	else if (input == 53)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		free_map(game->map);
 		free(game->textures);
 		exit (0); // verif si exit ok pour 42
+	}
+	if (moved)
+	{
+		game->input_count++;
+		ft_printf("Movement : %d\n", game->input_count);
 	}
 	return (0);
 }
