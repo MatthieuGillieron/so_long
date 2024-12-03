@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/02 09:52:05 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/03 10:04:22 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	player_position(t_game *game);
 void	move_player(t_game *game, int dx, int dy);
 void	map_dimension(char **map, size_t *width, size_t *height);
 void	free_map(char **map);
-void	draw_map(char **map, void *mlx_ptr, void *win_ptr, t_textures *textures);
+void	draw_tile(t_game *game, char tile, int x, int y);
+void	draw_map(t_game *game);
 t_textures *load_textures(void *mlx_ptr);
 
 #endif
