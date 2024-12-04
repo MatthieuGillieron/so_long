@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/03 13:50:14 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/04 12:15:00 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef	struct s_game
 }				t_game;
 
 char	**read_map(const char *path);
+
 
 int			keyboard(int input, t_game *game);
 int			close_game(t_game *game);
