@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:01:59 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 14:33:28 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/04 15:12:33 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,25 @@ int	check_is_valid(t_game *game)
 	}
 	if (player_count != 1 || exit_count != 1 || collect_count == 0)
 		return (0);
+	return (1);
+}
+
+int	map_empty(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] != '\n')
+				return (0);
+			x++;
+		}
+		y++;
+	}
 	return (1);
 }
