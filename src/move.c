@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:29:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 13:35:57 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/04 13:50:41 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int	move_player(t_game *game, int dx, int dy)
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
+	collect_item(game, new_x, new_y);
 	if (update_position(game, new_x, new_y))
 	{
-		collect_item(game, new_x, new_y);
 		game_end(game, new_x, new_y);
 		return (1);
 	}
