@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 12:15:00 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/04 13:34:45 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ char	**read_map(const char *path);
 int			keyboard(int input, t_game *game);
 int			close_game(t_game *game);
 int			move_player(t_game *game, int dx, int dy);
+int			move_player(t_game *game, int dx, int dy);
+void		game_end(t_game *game, int new_x, int new_y);
+int			update_position(t_game *game, int new_x, int new_y);
+void		collect_item(t_game *game, int new_x, int new_y);
 
 void		count_collect(char **map, t_game *game);
 void		cleanup(t_game *game);
