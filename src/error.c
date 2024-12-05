@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:01:59 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 15:12:33 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/05 14:42:53 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	check_map(t_game *game)
 		while (game->map[i][j])
 		{
 			if (!check_char_map(game->map[i][j]))
+			{
+	            ft_printf("Caractère invalide trouvé : %c\n", game->map[i][j]);
 				return (0);
+			}
 			j++;
 		}
 		i++;
@@ -40,22 +43,22 @@ int	check_map(t_game *game)
 	return (1);
 }
 
-int	check_border(char **map, size_t width, size_t height)
+int	check_border(t_game *game)
 {
 	size_t	x;
 	size_t	y;
 
 	x = 0;
-	while (x < width)
+	while (x < game->widthmap)
 	{
-		if (map[0][x] != '1' || map[height - 1][x] != '1')
+		if (game->map[0][x] != '1' || game->map[game->heightmap - 1][x] != '1')
 			return (0);
 		x++;
 	}
 	y = 0;
-	while (y < height)
+	while (y < game->heightmap)
 	{
-		if (map[y][0] != '1' || map[y][width - 1] != '1')
+		if (game->map[y][0] != '1' || game->map[y][game->widthmap - 1] != '1')
 			return (0);
 		y++;
 	}
@@ -70,6 +73,9 @@ int	check_is_valid(t_game *game)
 	int i;
 	int j;
 
+	player_count = 0;
+	exit_count = 0;
+	collect_count = 0;
 	i = 0;
 	while(game->map[i])
 	{
@@ -109,4 +115,33 @@ int	map_empty(t_game *game)
 		y++;
 	}
 	return (1);
+}
+
+
+
+
+void	check_errors(t_game *game)
+{
+	
+	if (map_empty(game))
+	{
+		ft_printf("Erreur : la carte est vide\n");
+		close_game(game);
+	}
+	if (!check_map(game))
+	{
+		ft_printf("Erreur : la carte contient des caractères invalides\n");
+		close_game(game);
+	}
+	if (!check_border(game))
+	{
+		ft_printf("Erreur : les murs de la carte sont incorrects\n");
+		close_game(game);
+	}
+	if (!check_is_valid(game))
+	{
+		ft_printf("Erreur : la carte doit avoir exactement un joueur, une sortie et au moins un collectible\n");
+		close_game(game);
+	}
+	verify_feasibility(game);
 }

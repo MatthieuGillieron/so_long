@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:28:26 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 12:14:55 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/05 13:05:24 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	map_dimension(char **map, size_t *width, size_t *height)
+void	map_dimension(char **map, t_game *game)
 {
-	*width = 0;
-	*height = 0;
-	while (map[*height])
+	game->widthmap = 0;
+	game->heightmap = 0;
+	while (map[game->heightmap])
 	{
 		size_t	line_len;
 
 		line_len = 0;
-		while (map[*height][line_len] && map[*height][line_len] != '\n')
+		while (map[game->heightmap][line_len]
+		 && map[game->heightmap][line_len] != '\n')
 			line_len++;
-		if (line_len > *width)
-			*width = line_len;
-		(*height)++;
+		if (line_len > game->widthmap)
+			game->widthmap = line_len;
+		game->heightmap++;
 	}
-
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/04 13:34:45 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/05 13:53:43 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef	struct s_game
 	int			input_count;
 	int			count_collect;
 	int			total_collect;
+	size_t		widthmap;
+	size_t		heightmap;
 }				t_game;
 
 char	**read_map(const char *path);
@@ -62,11 +64,16 @@ void		count_collect(char **map, t_game *game);
 void		cleanup(t_game *game);
 void		print_map(char **map);
 void		player_position(t_game *game);
-void		map_dimension(char **map, size_t *width, size_t *height);
+void		map_dimension(char **map, t_game *game);
 void		free_map(char **map);
 void		draw_tile(t_game *game, char tile, int x, int y);
 void		draw_map(t_game *game);
+void		check_errors(t_game *game);
 
+void		verify_feasibility(t_game *game);
+int			**init_visited(size_t width, size_t height);
+void		free_visited(int **visited, size_t height);
+void		dfs_explore(t_game *game, int y, int x, int **visited, size_t width, size_t height);
 t_textures 	*load_textures(void *mlx_ptr);
 
 #endif
