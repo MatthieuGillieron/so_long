@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/11 11:31:31 by mg                #+#    #+#             */
+/*   Updated: 2024/12/11 11:31:32 by mg               ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 int	check_map(t_game *game)
@@ -26,7 +38,6 @@ int	check_map(t_game *game)
 	return (1);
 }
 
-// Vérifie si les murs entourent correctement la carte
 int	check_border(t_game *game)
 {
 	int	x, y;
