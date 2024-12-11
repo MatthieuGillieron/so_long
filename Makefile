@@ -1,39 +1,23 @@
-NAME = so_long
+NAME := so_long
 
-SRC = $(wildcard src/*.c)
-GNL = $(wildcard gnl/*.c)
-PRINTF = $(wildcard printf/*.c)
-HEADERS = $(wildcard include/*.h)
-OBJS = $(SRC:.c=.o) $(GNL:.c=.o) $(PRINTF:.c=.o)
+CC := gcc
 
-FLAGS = -Wall -Werror -Wextra -I./mlx
-CC = gcc
+CFLAGS := -Wall -Wextra -Werror -Iheaders/
 
-MLX_DIR = mlx
-MLX_LIB = $(MLX_DIR)libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -Lmlx -framework OpenGL -framework AppKit
+SOURCE := src/*.c
+GETNEXTLINE := gnl/*c
+PRINTF := printf/*.c
+LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
+MINILIBX := minilibx/
 
-
-all: $(NAME)
-
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
-
-
-$(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
-
-
-%.o: %.c $(HEADERS)
-	$(CC) $(FLAGS) -c $< -o $@
+all:
+	make -C $(MINILIBX)
+	$(CC) $(CFLAGS) $(SOURCE) $(GETNEXTLINE) $(PRINTF) $(LIBRARY) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
 
-fclean:
-	rm -f $(NAME)
+fclean: clean
+		make clean -C $(MINILIBX)
+		rm -rf $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

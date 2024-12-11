@@ -2,7 +2,7 @@
 static char * pacdot_food_xpm[] = {
 "32 32 2 1",
 " 	c None",
-".	c #FFD67F",
+".	c #6DD7F6",
 "                                ",
 "                                ",
 "                                ",

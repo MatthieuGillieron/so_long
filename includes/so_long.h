@@ -5,75 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 10:38:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/05 13:53:43 by mg               ###   ########.fr       */
+/*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
+/*   Updated: 2024/12/10 18:18:39 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <string.h>
+# include "get_next_line.h"
+# include "ft_printf.h"
+# include "../minilibx/mlx.h"
 
-#include "../mlx/mlx.h"
-#include "get_next_line.h"
-#include "ft_printf.h"
-
-#define TILE_SIZE 32
-
-typedef struct s_textures
+typedef struct s_game
 {
-	void	*wall;
+	int		fd;
+	int		i;
+	int		j;
+	int		heightmap;
+	int		widthmap;
+
+	int exit_open;
+	int player_found;
+	int exit_found;
+	int collectabled;
+	int player_x;
+	int player_y;
+	int exit_x;
+	int exit_y;
+	int **visited;
+	
+	int		nbr_player;;
+	int		nbr_collect;
+	int		nbr_exit;
+	int		x_axis;
+	int		y_axis;
+	int		counter;
+	int		collectibles;
+
+	char	**map;
+
 	void	*floor;
-	void	*players;
-	void	*collect;
+	void	*wall;
+	void	*player;
 	void	*exit;
-	int		width;
-	int		height;
-}			t_textures;
+	void	*collect;
+	void	*mlx_ptr;
+	void	*win_ptr;
 
-typedef	struct s_game
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	char		**map;
-	t_textures	*textures;
-	int			player_x;
-	int			player_y;
-	int			input_count;
-	int			count_collect;
-	int			total_collect;
-	size_t		widthmap;
-	size_t		heightmap;
-}				t_game;
+}	t_game;
 
-char	**read_map(const char *path);
+int		close_game(t_game *game);
+int		map_reading(t_game *game, char **argv);
+void	put_texture(t_game *game);
+void	place_images_in_game(t_game *game);
+void	check_errors(t_game *game);
+void	explore_find_player(t_game *game);
+void	explore_map(t_game *game, int x, int y, int **visited);
+void	explore_complete(t_game *game, int **visited);
+int		*free_int_memory(int ***ptr);
+void	free_visited(int **visited, int height);
+void	explore_find_exit(t_game *game, int i, int j, int **visited);
+void	verify_feasibility(t_game *game);
 
 
-int			keyboard(int input, t_game *game);
-int			close_game(t_game *game);
-int			move_player(t_game *game, int dx, int dy);
-int			move_player(t_game *game, int dx, int dy);
-void		game_end(t_game *game, int new_x, int new_y);
-int			update_position(t_game *game, int new_x, int new_y);
-void		collect_item(t_game *game, int new_x, int new_y);
+void	is_collect(t_game *game, int height, int width);
+void	is_player(t_game *game, int height, int width);
+void	set_texture(t_game *game);
+int		read_the_map(t_game *game, char **argv);
+int		check_control(int input, t_game *game);
+void	*ft_memset(void *b, int c, size_t length);
+void 	verify_feasibility(t_game *game);
 
-void		count_collect(char **map, t_game *game);
-void		cleanup(t_game *game);
-void		print_map(char **map);
-void		player_position(t_game *game);
-void		map_dimension(char **map, t_game *game);
-void		free_map(char **map);
-void		draw_tile(t_game *game, char tile, int x, int y);
-void		draw_map(t_game *game);
-void		check_errors(t_game *game);
 
-void		verify_feasibility(t_game *game);
-int			**init_visited(size_t width, size_t height);
-void		free_visited(int **visited, size_t height);
-void		dfs_explore(t_game *game, int y, int x, int **visited, size_t width, size_t height);
-t_textures 	*load_textures(void *mlx_ptr);
+
 
 #endif

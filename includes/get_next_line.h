@@ -3,34 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: prossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:01:02 by mg                #+#    #+#             */
-/*   Updated: 2024/10/28 10:29:08 by mg               ###   ########.fr       */
+/*   Created: 2021/10/14 17:23:59 by prossi            #+#    #+#             */
+/*   Updated: 2022/02/22 18:58:50 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 12
+#  define BUFFER_SIZE 5
 # endif
 
-char		*extract_line(char *str);
-char		*next_in_stash(char *stash);
-char		*get_next_line(int fd);
-
-int			ft_strlen(const char *str);
-char		*ft_strchr(const char *src, int i);
-char		*ft_strdup(const char *src);
-char		*ft_strjoin(char const *s1, char const *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int i);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
 
 #endif
