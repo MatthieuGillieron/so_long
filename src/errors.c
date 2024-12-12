@@ -6,12 +6,15 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:31 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:31:32 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/11 14:00:21 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*
+	verif all car. sont valides
+*/
 int	check_map(t_game *game)
 {
 	int	i;
@@ -23,7 +26,6 @@ int	check_map(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			// Vérifie directement si le caractère est valide
 			if (game->map[i][j] != '0' && game->map[i][j] != '1' &&
 				game->map[i][j] != 'C' && game->map[i][j] != 'E' &&
 				game->map[i][j] != 'P' && game->map[i][j] != '\n')
@@ -37,7 +39,9 @@ int	check_map(t_game *game)
 	}
 	return (1);
 }
-
+/*
+	verif si entourer de murs
+*/
 int	check_border(t_game *game)
 {
 	int	x, y;
@@ -58,8 +62,9 @@ int	check_border(t_game *game)
 	}
 	return (1);
 }
-
-// Compte les éléments obligatoires et vérifie leur présence
+/*
+	compte element obligatoire minimum
+*/
 int	check_case(t_game *game)
 {
 	game->nbr_player = 0;
@@ -99,7 +104,9 @@ int	empty_map(t_game *game)
 	return (0);
 }
 
-
+/*
+	full verif.
+*/
 void	check_errors(t_game *game)
 {
 	if (empty_map(game))

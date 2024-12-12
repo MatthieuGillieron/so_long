@@ -6,12 +6,15 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:37 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:31:38 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/11 19:43:33 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*
+	init tab. pour marquer les cases visité
+*/
 static int	**init_visited(t_game *game)
 {
 	int	**visited;
@@ -40,7 +43,9 @@ static int	**init_visited(t_game *game)
 	}
 	return (visited);
 }
-
+/*
+	Libere mem. des cases visitées
+*/
 void	free_visited(int **visited, int height)
 {
 	int	i;
@@ -53,7 +58,9 @@ void	free_visited(int **visited, int height)
 	}
 	free(visited);
 }
-
+/*
+	Verif si map ok en explo. les cases atteignables
+*/
 void	verify_feasibility(t_game *game)
 {
 	int	**visited;

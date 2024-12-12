@@ -6,12 +6,14 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:24 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:31:26 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/11 19:43:43 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
+/*
+	Verif. si pos. valide pour visiter & non bloquer,visitée, limites map.. 
+*/
 static int	is_valid_position(t_game *game, int x, int y, int **visited)
 {
 	int	is_within_map_bounds;
@@ -28,7 +30,9 @@ static int	is_valid_position(t_game *game, int x, int y, int **visited)
 			&& has_not_been_visited));
 }
 
-
+/*
+	loc. le player & save les coordoner dans struct
+*/
 void	explore_find_player(t_game *game)
 {
 	int	i;
@@ -55,7 +59,9 @@ void	explore_find_player(t_game *game)
 
 
 
-
+/*
+	Verif si sortie est atteignable
+*/
 void	explore_find_exit(t_game *game, int i, int j, int **visited)
 {
 	while (i < game->heightmap && !game->exit_found)
@@ -76,7 +82,9 @@ void	explore_find_exit(t_game *game, int i, int j, int **visited)
 
 
 
-
+/*
+	Explo complete & ouvre la sortie
+*/
 void	explore_complete(t_game *game, int **visited)
 {
 	int	i;
@@ -103,7 +111,9 @@ void	explore_complete(t_game *game, int **visited)
 	i = 0;
 	explore_find_exit(game, i, j, visited);
 }
-
+/*
+	cherche tt les collect et marque pos. visité
+*/
 void	explore_map(t_game *game, int x, int y, int **visited)
 {
 	if (!is_valid_position(game, x, y, visited))
@@ -118,4 +128,3 @@ void	explore_map(t_game *game, int x, int y, int **visited)
 	explore_map(game, x, y + 1, visited);
 	explore_map(game, x, y - 1, visited);
 }
-

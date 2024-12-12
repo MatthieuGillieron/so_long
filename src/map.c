@@ -6,12 +6,15 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:51 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:31:52 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/11 19:56:50 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*
+	calcul largeur ligne sans \n (utile pour verif tt mm largeur)
+*/
 static int	same_width(char *str)
 {
 	int	width;
@@ -24,6 +27,10 @@ static int	same_width(char *str)
 	return (width);
 }
 
+/*
+ 	Ajoute une nouvelle ligne à la carte.
+  	Met à jour le tableau de la carte avec la nouvelle ligne.
+*/
 static int	add_line(t_game *game, char *line)
 {
 	char	**temporary;
@@ -46,7 +53,9 @@ static int	add_line(t_game *game, char *line)
 	game->map = temporary;
 	return (1);
 }
-
+/*
+	lis fichier de la map, cree la map, init largeur en fonction premiere ligne
+*/
 int	read_the_map(t_game *game, char **argv)
 {
 	char	*readmap;

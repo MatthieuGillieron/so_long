@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:32:00 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:32:05 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/12 11:58:42 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 #define MOVE_MAX 2147483637
 
+
+/*
+	Déplace joueur si pas d'obstacle.
+	Met à jour la positionet gère les interactions
+*/
 static int	move_player(t_game *game, int new_x, int new_y)
 {
 	char	position;
@@ -41,7 +46,10 @@ static int	move_player(t_game *game, int new_x, int new_y)
 
 	return (1);
 }
-
+/*
+ 	gere input clavier.
+	Vérifie aussi limites map.
+*/
 static int	keyboard(t_game *game, int input)
 {
 	int	new_x;
@@ -66,7 +74,9 @@ static int	keyboard(t_game *game, int input)
 
 	return (move_player(game, new_x, new_y));
 }
-
+/*
+	check si trop de deplacement (int max)
+*/
 static void	to_much_moves(t_game *game)
 {
 	if (game->counter >= MOVE_MAX)
@@ -75,7 +85,9 @@ static void	to_much_moves(t_game *game)
 		close_game(game);
 	}
 }
-
+/*
+	effectue ttes les verifs.
+*/
 int	check_control(int input, t_game *game)
 {
 	int	ok;
