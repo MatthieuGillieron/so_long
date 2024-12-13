@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:32:07 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 11:32:09 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/13 11:06:37 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
+	{
+		ft_printf("expected execution : ./so_long map/...\n");
 		return (0);
+	}
 	ft_memset(&game, 0, sizeof(t_game));
 	read_the_map(&game, argv);
 	check_errors(&game);
