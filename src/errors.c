@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:31 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 14:00:21 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 13:29:10 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ int	check_map(t_game *game)
 	}
 	return (1);
 }
+
 /*
 	verif si entourer de murs
 */
 int	check_border(t_game *game)
 {
-	int	x, y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < game->widthmap)
@@ -62,6 +64,7 @@ int	check_border(t_game *game)
 	}
 	return (1);
 }
+
 /*
 	compte element obligatoire minimum
 */
@@ -77,11 +80,11 @@ int	check_case(t_game *game)
 		while (game->map[game->i][game->j])
 		{
 			if (game->map[game->i][game->j] == 'P')
-			 game->nbr_player++;
+				game->nbr_player++;
 			if (game->map[game->i][game->j] == 'E')
-			 game->nbr_exit++;
+				game->nbr_exit++;
 			if (game->map[game->i][game->j] == 'C')
-			 game->nbr_collect++;
+				game->nbr_collect++;
 			game->j++;
 		}
 		game->i++;

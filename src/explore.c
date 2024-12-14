@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   explore.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:24 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 19:43:43 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 13:31:19 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	explore_find_player(t_game *game)
 	}
 }
 
-
-
 /*
 	Verif si sortie est atteignable
 */
@@ -79,8 +77,6 @@ void	explore_find_exit(t_game *game, int i, int j, int **visited)
 		i++;
 	}
 }
-
-
 
 /*
 	Explo complete & ouvre la sortie
@@ -111,6 +107,7 @@ void	explore_complete(t_game *game, int **visited)
 	i = 0;
 	explore_find_exit(game, i, j, visited);
 }
+
 /*
 	cherche tt les collect et marque pos. visité
 */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 19:48:27 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 14:05:28 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	is_player(t_game *game, int height, int width)
 	game->y_axis = height;
 	game->x_axis = width;
 }
+
 /*
 	met image + incremente collect
 */
@@ -31,6 +32,7 @@ void	is_collect(t_game *game, int height, int width)
 		game->win_ptr, game->collect, width * 40, height * 40);
 	game->collectibles++;
 }
+
 /*
 	charge texture et stock dans la struct
 */
@@ -50,36 +52,35 @@ void	set_texture(t_game *game)
 	game->collect = mlx_xpm_file_to_image(game->mlx_ptr,
 			"assets/collect.xpm", &i, &j);
 }
+
 /*
-	met les textures sur la fenetre selon map etc..
+	met les textures sur la fenetre selon map etc.. 
+	(h est height et w width pour gagner ligne)
 */
 void	put_texture(t_game *game)
 {
-	int	height;
-	int	width;
-
 	game->collectibles = 0;
-	height = 0;
-	while (height < game->heightmap)
+	game->h = 0;
+	while (game->h < game->heightmap)
 	{
-		width = 0;
-		while (game->map[height][width])
+		game->w = 0;
+		while (game->map[game->h][game->w])
 		{
-			if (game->map[height][width] == '1')
+			if (game->map[game->h][game->w] == '1')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->wall, width * 40, height * 40);
-			if (game->map[height][width] == 'C')
-				is_collect(game, height, width);
-			if (game->map[height][width] == 'P')
-				is_player(game, height, width);
-			if (game->map[height][width] == 'E')
+					game->win_ptr, game->wall, game->w * 40, game->h * 40);
+			if (game->map[game->h][game->w] == 'C')
+				is_collect(game, game->h, game->w);
+			if (game->map[game->h][game->w] == 'P')
+				is_player(game, game->h, game->w);
+			if (game->map[game->h][game->w] == 'E')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->exit, width * 40, height * 40);
-			if (game->map[height][width] == '0')
+					game->win_ptr, game->exit, game->w * 40, game->h * 40);
+			if (game->map[game->h][game->w] == '0')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->floor, width * 40, height * 40);
-			width++;
+					game->win_ptr, game->floor, game->w * 40, game->h * 40);
+			game->w++;
 		}
-		height++;
+		game->h++;
 	}
 }

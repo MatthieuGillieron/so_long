@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:37 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 19:43:33 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 13:27:27 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	**init_visited(t_game *game)
 	}
 	return (visited);
 }
+
 /*
 	Libere mem. des cases visitées
 */
@@ -58,6 +59,7 @@ void	free_visited(int **visited, int height)
 	}
 	free(visited);
 }
+
 /*
 	Verif si map ok en explo. les cases atteignables
 */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:51 by mg                #+#    #+#             */
-/*   Updated: 2024/12/11 19:56:50 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 13:32:29 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	add_line(t_game *game, char *line)
 	game->map = temporary;
 	return (1);
 }
+
 /*
 	lis fichier de la map, cree la map, init largeur en fonction premiere ligne
 */
@@ -72,4 +73,4 @@ int	read_the_map(t_game *game, char **argv)
 	close (game->fd);
 	game->widthmap = same_width(game->map[0]);
 	return (1);
-} 
+}

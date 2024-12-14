@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
-/*   Updated: 2024/12/10 18:18:39 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/14 14:02:25 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,20 @@ typedef struct s_game
 	int		j;
 	int		heightmap;
 	int		widthmap;
+	int 	h;
+	int 	w;
 
-	int exit_open;
-	int player_found;
-	int exit_found;
-	int collectabled;
-	int player_x;
-	int player_y;
-	int exit_x;
-	int exit_y;
-	int **visited;
-	
-	int		nbr_player;;
+	int		exit_open;
+	int		player_found;
+	int		exit_found;
+	int		collectabled;
+	int		player_x;
+	int		player_y;
+	int		exit_x;
+	int		exit_y;
+	int		**visited;
+
+	int		nbr_player;
 	int		nbr_collect;
 	int		nbr_exit;
 	int		x_axis;
@@ -73,16 +75,12 @@ void	free_visited(int **visited, int height);
 void	explore_find_exit(t_game *game, int i, int j, int **visited);
 void	verify_feasibility(t_game *game);
 
-
 void	is_collect(t_game *game, int height, int width);
 void	is_player(t_game *game, int height, int width);
 void	set_texture(t_game *game);
 int		read_the_map(t_game *game, char **argv);
 int		check_control(int input, t_game *game);
 void	*ft_memset(void *b, int c, size_t length);
-void 	verify_feasibility(t_game *game);
-
-
-
+void	verify_feasibility(t_game *game);
 
 #endif
