@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:32:07 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 15:02:11 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:15:07 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	check_errors(&game);
 	verify_feasibility(&game);
 	game.mlx_ptr = mlx_init();
-	game.win_ptr = mlx_new_window(game.mlx_ptr, (game.widthmap * PIXEL),
-			(game.heightmap * PIXEL), "solong");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, (game.widthmap * PIX),
+			(game.heightmap * PIX), "solong");
 	set_texture(&game);
 	put_texture(&game);
 	mlx_key_hook(game.win_ptr, check_control, &game);

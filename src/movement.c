@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:32:00 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 13:38:47 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:28:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_control(int input, t_game *game)
 {
 	int	ok;
 
-		ok = keyboard(game, input);
+	ok = keyboard(game, input);
 	if (ok)
 	{
 		put_texture(game);
