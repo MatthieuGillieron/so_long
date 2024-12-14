@@ -6,12 +6,14 @@
 /*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
-/*   Updated: 2024/12/14 14:02:25 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:02:51 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+#define PIXEL 32
 
 # include <unistd.h>
 # include <stdio.h>

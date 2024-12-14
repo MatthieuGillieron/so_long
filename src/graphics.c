@@ -6,7 +6,7 @@
 /*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 14:05:28 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:01:48 by magillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	is_player(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx_ptr,
-		game->win_ptr, game->player, width * 40, height * 40);
+		game->win_ptr, game->player, width * PIXEL, height * PIXEL);
 	game->y_axis = height;
 	game->x_axis = width;
 }
@@ -29,7 +29,7 @@ void	is_player(t_game *game, int height, int width)
 void	is_collect(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx_ptr,
-		game->win_ptr, game->collect, width * 40, height * 40);
+		game->win_ptr, game->collect, width * PIXEL, height * PIXEL);
 	game->collectibles++;
 }
 
@@ -68,17 +68,17 @@ void	put_texture(t_game *game)
 		{
 			if (game->map[game->h][game->w] == '1')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->wall, game->w * 40, game->h * 40);
+					game->win_ptr, game->wall, game->w * PIXEL, game->h * PIXEL);
 			if (game->map[game->h][game->w] == 'C')
 				is_collect(game, game->h, game->w);
 			if (game->map[game->h][game->w] == 'P')
 				is_player(game, game->h, game->w);
 			if (game->map[game->h][game->w] == 'E')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->exit, game->w * 40, game->h * 40);
+					game->win_ptr, game->exit, game->w * PIXEL, game->h * PIXEL);
 			if (game->map[game->h][game->w] == '0')
 				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->floor, game->w * 40, game->h * 40);
+					game->win_ptr, game->floor, game->w * PIXEL, game->h * PIXEL);
 			game->w++;
 		}
 		game->h++;
