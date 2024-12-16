@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:43 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 17:14:44 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/16 12:56:24 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ void	set_texture(t_game *game)
 			"assets/exit.xpm", &i, &j);
 	game->collect = mlx_xpm_file_to_image(game->mlx_ptr,
 			"assets/collect.xpm", &i, &j);
+	if (!game->floor || !game->wall
+		|| !game->player || !game->exit || !game->collect)
+	{
+		ft_printf("Error: Failed to load textures.\n");
+		exit(EXIT_FAILURE);
+	}
 }
 
 /*

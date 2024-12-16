@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:51 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 13:32:29 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/16 12:57:10 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,22 @@ int	read_the_map(t_game *game, char **argv)
 
 	game->fd = open(argv[1], O_RDONLY);
 	if (game->fd < 0)
+	{
+		ft_printf("Error: Failed to open the file.\n");
 		return (0);
+	}
 	while (1)
 	{
 		readmap = get_next_line(game->fd);
 		if (!add_line(game, readmap))
 			break ;
 	}
-	close (game->fd);
+	close(game->fd);
 	game->widthmap = same_width(game->map[0]);
+	if (game->widthmap == -1)
+	{
+		ft_printf("Error: Map rows have bad widths.\n");
+		return (0);
+	}
 	return (1);
 }
