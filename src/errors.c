@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magillie <magillie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:31 by mg                #+#    #+#             */
-/*   Updated: 2024/12/14 13:29:10 by magillie         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:05:45 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,29 @@ int	check_case(t_game *game)
 
 int	empty_map(t_game *game)
 {
+	int	width;
+	int	i;
+
 	if (!game->map || game->map[0][0] == '\0')
 	{
-		ft_printf("ERROR : empty map.\n");
+		ft_printf("ERROR : Empty map.\n");
 		return (1);
+	}
+	width = same_width(game->map[0]);
+	i = 1;
+	while (i < game->heightmap)
+	{
+		if (same_width(game->map[i]) != width)
+		{
+			ft_printf("ERROR: Map is not rectangular.\n");
+			close_game(game);
+			exit(EXIT_FAILURE);
+		}
+		i++;
 	}
 	return (0);
 }
+
 
 /*
 	full verif.

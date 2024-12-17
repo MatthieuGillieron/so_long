@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
-/*   Updated: 2024/12/16 12:51:08 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/16 13:38:50 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		*free_int_memory(int ***ptr);
 void	free_visited(int **visited, int height);
 void	explore_find_exit(t_game *game, int i, int j, int **visited);
 void	verify_feasibility(t_game *game);
-
+int		same_width(char *str);
 void	is_collect(t_game *game, int height, int width);
 void	is_player(t_game *game, int height, int width);
 void	set_texture(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:31:51 by mg                #+#    #+#             */
-/*   Updated: 2024/12/16 12:57:10 by mg               ###   ########.fr       */
+/*   Updated: 2024/12/16 13:06:21 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	calcul largeur ligne sans \n (utile pour verif tt mm largeur)
 */
-static int	same_width(char *str)
+int	same_width(char *str)
 {
 	int	width;
 
