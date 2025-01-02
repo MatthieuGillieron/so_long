@@ -42,7 +42,7 @@ Voici les fonctionnalités que le projet doit implémenter :
 
 ---
 
-## 🚀 Comment exécuter le projet  
+#### 🚀 Comment exécuter le projet  
 
 1. Clonez ce dépôt :  
    ```bash
