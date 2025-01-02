@@ -8,7 +8,9 @@ Le but principal de **So Long** est de créer un petit jeu en 2D où le joueur p
 ![Aperçu du jeu So Long](assets/image.png)  
 *Un exemple de rendu du jeu So Long en cours d'exécution.*  
 
-####
+
+
+
 
 ### 🕹️ Fonctionnalités  
 
