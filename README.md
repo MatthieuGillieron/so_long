@@ -46,7 +46,9 @@ Voici les fonctionnalités que le projet doit implémenter :
    ```bash
    git clone https://github.com/votre-utilisateur/so_long.git
    cd so_long
-   
+
+2. Exécuter : 
+   ```bash
    make
    ./so_long map/nom_de_la_carte.ber
 
