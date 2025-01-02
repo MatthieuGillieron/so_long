@@ -10,7 +10,7 @@ Le but principal de **So Long** est de créer un petit jeu en 2D où le joueur p
 
 
 
-## 🕹️ Fonctionnalités  
+### 🕹️ Fonctionnalités  
 
 Voici les fonctionnalités que le projet doit implémenter :  
 
@@ -31,7 +31,6 @@ Voici les fonctionnalités que le projet doit implémenter :
 5. **Affichage graphique :**  
    - Les éléments du jeu (joueur, murs, sol, objets, sortie) sont représentés par des textures ou des couleurs simples.  
 
----
 
 
 ## 🛠️ Technologies utilisées  
