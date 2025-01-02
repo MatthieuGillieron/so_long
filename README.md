@@ -2,13 +2,13 @@
 
 Bienvenue dans le dépôt de **So Long**, un projet réalisé dans le cadre de la formation à l'école 42. Ce projet explore les bases de la programmation en **C** tout en introduisant des concepts liés au rendu graphique.  
 
----
+
 
 ## 🌟 Objectif du projet  
 
 Le but principal de **So Long** est de créer un petit jeu en 2D où le joueur peut se déplacer dans un labyrinthe, collecter des objets et atteindre une sortie pour gagner. Le projet fait appel à la bibliothèque graphique **MinilibX** (MLX) pour gérer l’affichage et les interactions.  
 
----
+
 
 ## 🕹️ Fonctionnalités  
 
