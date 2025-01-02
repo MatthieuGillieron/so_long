@@ -5,7 +5,7 @@
 
 Le but principal de **So Long** est de créer un petit jeu en 2D où le joueur peut se déplacer dans un labyrinthe, collecter des objets et atteindre une sortie pour gagner. Le projet fait appel à la bibliothèque graphique **MinilibX** (MLX) pour gérer l’affichage et les interactions.  
 
-![Aperçu du jeu So Long](chemin/vers/votre-image.png)  
+![Aperçu du jeu So Long](assets/image)  
 *Un exemple de rendu du jeu So Long en cours d'exécution.*  
 
 
