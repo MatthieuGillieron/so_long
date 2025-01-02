@@ -35,7 +35,7 @@ Voici les fonctionnalités que le projet doit implémenter :
 - **Langage :** C  
 - **Bibliothèque graphique :** [MinilibX](https://github.com/42Paris/minilibx-linux)  
 - **Compilation :** Makefile  
-- **Norme :** Respect strict de la norme de codage 42.  
+- **Norme :** Respect strict de la norme de 42.  
 
 ---
 
