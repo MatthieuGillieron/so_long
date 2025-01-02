@@ -1,8 +1,5 @@
 # So Long - Projet 42  
 
- **So Long**, un projet réalisé dans le cadre de la formation à l'école 42. Ce projet explore les bases de la programmation en **C** tout en introduisant des concepts liés au rendu graphique.  
-
-
 
 ### 🌟 Objectif du projet  
 
