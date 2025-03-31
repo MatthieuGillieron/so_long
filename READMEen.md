@@ -52,4 +52,4 @@ Here are the key features that the project must implement:
 2. Compile and Run:
    ```bash
    make
-   ./so_long map/nom_de_la_carte.ber
+   ./so_long map/map_name.ber
