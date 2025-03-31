@@ -1,5 +1,6 @@
 # So Long - Projet 42  
 
+[![English](https://img.shields.io/badge/English-blue.svg)](./READMEen.md)   [![Français](https://img.shields.io/badge/Français-gray.svg)](./README.md)  
 
 ### 🌟 Objectif du projet  
 
