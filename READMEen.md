@@ -47,3 +47,9 @@ Here are the key features that the project must implement:
    ```bash
    git clone https://github.com/your-username/so_long.git
    cd so_long
+
+
+2. Compile and Run:
+   ```bash
+   make
+   ./so_long map/nom_de_la_carte.ber
